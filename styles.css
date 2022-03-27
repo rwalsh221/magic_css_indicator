@@ -1,0 +1,112 @@
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* END OF CSS RESET */
+
+body {
+  height: 100%;
+  background-color: dimgray;
+}
+
+.nav {
+  background-color: darkslategray;
+  position: relative;
+  width: 40%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 2rem;
+  display: grid;
+  grid-template-areas: 'one two three four five';
+  grid-template-columns: repeat(5, 14rem);
+  justify-items: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.icon {
+  font-size: 5rem;
+}
+.nav-items {
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.nav-items p {
+  font-size: 2rem;
+}
+
+.nav-items:first-of-type {
+  background-color: hotpink;
+}
+
+.indicator {
+  grid-area: one;
+  position: relative;
+  top: -50%;
+  display: flex;
+}
+
+.indicator__main {
+  grid-area: one;
+  height: 12rem;
+  width: 12rem;
+  background-color: darkolivegreen;
+
+  border-radius: 50%;
+  transition: all 2s;
+  border: 1rem solid dimgray;
+}
+
+.indicator__left {
+  background-color: dimgray;
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+}
+
+.nav-items__one {
+  grid-area: one;
+}
+
+.nav-items__two {
+  grid-area: two;
+}
+.nav-items__three {
+  grid-area: three;
+}
+.nav-items__four {
+  grid-area: four;
+}
+.nav-items__five {
+  grid-area: five;
+}
