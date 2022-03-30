@@ -70,11 +70,12 @@ body {
 }
 
 .indicator {
-  grid-area: one;
+  /* grid-area: one; */
   position: relative;
   top: -80%;
+  left: 0px;
   display: flex;
-
+  transition: left 1s;
   grid-area: one;
   height: 12rem;
   width: 12rem;
@@ -85,18 +86,33 @@ body {
   border: 1rem solid dimgray;
 }
 
-.indicator::before {
+.indicator::before,
+.indicator::after {
   content: '';
   display: block;
-  height: 5rem;
-  width: 5rem;
+  height: 2rem;
+  width: 2rem;
   background-color: darkslategray;
+}
+
+.indicator::before {
   top: 66px;
-  left: 102px;
+  left: -25px;
   position: absolute;
-  border-top-left-radius: 37%;
+  border-top-right-radius: 47%;
+  /* width: 400%; */
+  box-shadow: 6.5px -7px 0px -7px dimgray;
+  /* background-color: darkslategray; */
+}
+
+.indicator::after {
+  top: 66px;
+  left: 105px;
+  position: absolute;
+  border-top-left-radius: 47%;
   /* width: 400%; */
   box-shadow: -6px -8px 0px -7px dimgray;
+  /* background-color: aquamarine; */
 }
 
 .indicator__main {
@@ -127,9 +143,9 @@ body {
   grid-area: five;
 }
 
-.nav-items__three:hover ~ .indicator {
-  grid-area: three;
-  background-color: aqua;
+.nav-items__three:active ~ .indicator {
+  left: 400px;
+  /* background-color: aqua; */
 }
 
 .test {
