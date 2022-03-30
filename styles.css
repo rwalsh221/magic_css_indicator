@@ -72,19 +72,34 @@ body {
 .indicator {
   grid-area: one;
   position: relative;
-  top: -50%;
+  top: -80%;
   display: flex;
-}
 
-.indicator__main {
   grid-area: one;
   height: 12rem;
   width: 12rem;
   background-color: darkolivegreen;
 
   border-radius: 50%;
-  transition: all 2s;
+
   border: 1rem solid dimgray;
+}
+
+.indicator::before {
+  content: '';
+  display: block;
+  height: 5rem;
+  width: 5rem;
+  background-color: darkslategray;
+  top: 66px;
+  left: 102px;
+  position: absolute;
+  border-top-left-radius: 37%;
+  /* width: 400%; */
+  box-shadow: -6px -8px 0px -7px dimgray;
+}
+
+.indicator__main {
 }
 
 .indicator__left {
@@ -103,6 +118,7 @@ body {
 }
 .nav-items__three {
   grid-area: three;
+  background-color: hotpink;
 }
 .nav-items__four {
   grid-area: four;
@@ -110,3 +126,24 @@ body {
 .nav-items__five {
   grid-area: five;
 }
+
+.nav-items__three:hover ~ .indicator {
+  grid-area: three;
+  background-color: aqua;
+}
+
+.test {
+  content: '';
+  display: block;
+  height: 5rem;
+  width: 5rem;
+  background-color: hotpink;
+  top: 66px;
+  left: 102px;
+  position: absolute;
+  border-top-left-radius: 37%;
+  /* width: 400%; */
+  box-shadow: 2px 2px 0px 2px black;
+  box-shadow: -9px -8px 0px -9px black;
+}
+/* -9px -8px 0px -9px black */
