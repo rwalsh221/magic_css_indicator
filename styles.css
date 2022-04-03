@@ -54,6 +54,7 @@ body {
 }
 
 .icon {
+  pointer-events: none;
   font-size: 5rem;
   position: relative;
   z-index: 100;
@@ -66,6 +67,7 @@ body {
   /* position: absolute; */
 }
 .nav-items {
+  /* pointer-events: none; */
   text-align: center;
   text-transform: capitalize;
   flex-basis: 20%;
@@ -78,9 +80,12 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background-color: hotpink;
+  z-index: 150;
 }
 
 .nav-items--description {
+  pointer-events: none;
   display: block;
   font-size: 2rem;
   position: relative;
@@ -105,18 +110,18 @@ body {
 
 .indicator {
   /* grid-area: one; */
-  position: absolute;
-  top: -80px;
-  left: 49px;
-  display: flex;
+  position: fixed;
+  top: 170px;
+  /* left: 49px; */
+  /* display: flex; */
   transition: left 1s;
-  grid-area: one;
+  /* grid-area: one; */
   height: 16rem;
   width: 16rem;
   background-color: green;
-
+  /* transform: translateX(-50%); */
   border-radius: 50%;
-
+  z-index: 1;
   border: 1.5rem solid darkslategray;
 }
 

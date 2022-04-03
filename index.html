@@ -12,25 +12,26 @@
 </head>
 
 <body>
+    <div data-indicator class="indicator"></div>
     <nav class="nav">
-        <div class="indicator"></div>
-        <div class="nav-items nav-items__one">
+
+        <div data-nav-item="one" class="nav-items">
             <ion-icon class="icon" name="barbell-outline"></ion-icon>
             <p class="nav-items--description">barbell</p>
         </div>
-        <div class="nav-items nav-items__two">
+        <div data-nav-item="two" class="nav-items">
             <ion-icon class="icon" name="american-football-outline"></ion-icon>
             <p class="nav-items--description">football</p>
         </div>
-        <div class="nav-items nav-items__three">
+        <div data-nav-item="three" class="nav-items">
             <ion-icon class="icon" name="baseball-outline"></ion-icon>
             <p class="nav-items--description">baseball</p>
         </div>
-        <div class="nav-items nav-items__four">
+        <div data-nav-item="four" class="nav-items">
             <ion-icon class="icon" name="bicycle-outline"></ion-icon>
             <p class="nav-items--description">bicycle</p>
         </div>
-        <div class="nav-items nav-items__five">
+        <div data-nav-item="five" class="nav-items">
             <ion-icon class="icon" name="walk-outline"></ion-icon>
             <p class="nav-items--description">walk</p>
         </div>
@@ -49,6 +50,7 @@
 
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
