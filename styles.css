@@ -34,56 +34,90 @@ img {
 
 body {
   height: 100%;
-  background-color: dimgray;
+  background-color: darkslategray;
 }
 
 .nav {
-  background-color: darkslategray;
+  background-color: white;
   position: relative;
-  width: 40%;
+  width: 50%;
+  height: 14rem;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 2rem;
-  display: grid;
-  grid-template-areas: 'one two three four five';
-  grid-template-columns: repeat(5, 14rem);
+  display: flex;
   justify-items: center;
   align-items: center;
   padding: 2rem;
+  /* overflow: hidden; */
 }
 
 .icon {
   font-size: 5rem;
+  position: relative;
+  z-index: 100;
+  transition: all 2s;
+  top: 20px;
+  /* top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+
+  /* position: absolute; */
 }
 .nav-items {
   text-align: center;
   text-transform: capitalize;
+  flex-basis: 20%;
+  /* padding: 2rem 4rem; */
+  /* overflow: hidden; */
+  position: relative;
+  height: 100%;
+  /* height: 5rem; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.nav-items p {
+.nav-items--description {
+  display: block;
   font-size: 2rem;
+  position: relative;
+  top: 60px;
+  transition: all 3s;
+  opacity: 0;
 }
 
-.nav-items:first-of-type {
-  background-color: hotpink;
+.nav-items__one:hover > .icon {
+  top: -100px;
+  color: red;
+}
+
+.nav-items__one:hover > .nav-items--description {
+  top: -20px;
+  opacity: 1;
+}
+
+.nav-items:hover > .icon {
+  /* top: -50px; */
 }
 
 .indicator {
   /* grid-area: one; */
-  position: relative;
-  top: -80%;
-  left: 0px;
+  position: absolute;
+  top: -80px;
+  left: 49px;
   display: flex;
   transition: left 1s;
   grid-area: one;
-  height: 12rem;
-  width: 12rem;
-  background-color: darkolivegreen;
+  height: 16rem;
+  width: 16rem;
+  background-color: green;
 
   border-radius: 50%;
 
-  border: 1rem solid dimgray;
+  border: 1.5rem solid darkslategray;
 }
 
 .indicator::before,
@@ -123,29 +157,6 @@ body {
   height: 6rem;
   width: 6rem;
   border-radius: 50%;
-}
-
-.nav-items__one {
-  grid-area: one;
-}
-
-.nav-items__two {
-  grid-area: two;
-}
-.nav-items__three {
-  grid-area: three;
-  background-color: hotpink;
-}
-.nav-items__four {
-  grid-area: four;
-}
-.nav-items__five {
-  grid-area: five;
-}
-
-.nav-items__three:active ~ .indicator {
-  left: 400px;
-  /* background-color: aqua; */
 }
 
 .test {
