@@ -1,59 +1,83 @@
-const elements = {
+const elementsObj = {
   indicator: document.querySelector('[data-indicator]'),
+  nav: document.querySelector('.nav'),
+  selectedNavElement: document.querySelector('[data-nav-container="one"]'),
+  prevSelectedNavElement: document.querySelector('[data-nav-container="one"]'),
 };
 
-const test2 = (element) => {
-  console.log(element);
+const animation = {
+  icon: { up: { top: '-45px' }, down: { top: '20px' } },
+  description: {
+    up: { top: '-5px', opacity: '1' },
+    down: { top: '15px', opacity: '0' },
+  },
 };
 
-const test = [...document.querySelectorAll('[data-nav-item]')];
-console.log(document.querySelectorAll('[data-nav-item="one"]'));
-console.log(test);
-console.log(elements.indicator);
+const navContainers = [...document.querySelectorAll('[data-nav-container]')];
+
+const getSelectedNavElement = (event) => {
+  elementsObj.selectedNavElement = document.querySelector(
+    `[data-nav-container="${event.target.dataset.navContainer}"]`
+  );
+  animateChildElement(elementsObj.prevSelectedNavElement, 'down');
+  elementsObj.prevSelectedNavElement = elementsObj.selectedNavElement;
+  positionIndicator();
+};
 
 const getCurrentIndicatorPosition = () => {
-  return elements.indicator.getBoundingClientRect();
+  return elementsObj.indicator.getBoundingClientRect();
 };
 
-const positionIndicator = (event) => {
-  const element = document.querySelector(
-    `[data-nav-item="${event.target.dataset.navItem}"]`
-  );
-  console.log('hello');
-  console.log(element.getBoundingClientRect());
-
-  const nav = document.querySelector('.nav').getBoundingClientRect();
+const positionIndicator = (event = 'one') => {
+  const nav = elementsObj.nav.getBoundingClientRect();
 
   const indicatorPostion = getCurrentIndicatorPosition();
-  const elementPosition = element.getBoundingClientRect();
+  const selectedElementPosition =
+    elementsObj.selectedNavElement.getBoundingClientRect();
 
-  console.log('indicator', indicatorPostion.left);
-  console.log('element', elementPosition.left);
-
-  const left = elementPosition.left - nav.left;
-  console.log(left);
+  const moveIndicator = selectedElementPosition.left - nav.left;
 
   //   centers the indicator over the nav item
   const setIndicatorPosition =
-    elementPosition.width / 2 - indicatorPostion.width / 2 + left;
-  //   const setIndicatorPosition = left;
-  console.log(indicatorPostion);
+    selectedElementPosition.width / 2 -
+    indicatorPostion.width / 2 +
+    moveIndicator;
 
-  //   elements.indicator.style.left = `${setIndicatorPosition}px`;
-  elements.indicator.style.left = `${setIndicatorPosition}px`;
+  elementsObj.indicator.style.left = `${setIndicatorPosition}px`;
 
-  console.log(element.querySelector('ion-icon'));
-
-  const childIcon = element.querySelector('ion-icon');
-  const childText = element.querySelector('p');
-
-  childIcon.style.top = '-50px';
-  childText.style.top = '-5px';
-  childText.style.opacity = '1';
+  animateChildElement(elementsObj.selectedNavElement);
 };
 
-test.forEach((element) =>
+const animateChildElement = (selectedNavElement, animationDirection = 'up') => {
+  const childNodesArr = [...selectedNavElement.childNodes];
+
+  childNodesArr.forEach((element) => {
+    if (element.dataset) {
+      const selectedNavChild = selectedNavElement.querySelector(
+        `[data-nav-item="${element.dataset.navItem}"]`
+      );
+      if (element.dataset.navItem === 'icon') {
+        selectedNavChild.style.top = animation.icon[animationDirection].top;
+        return;
+      }
+
+      if (element.dataset.navItem === 'description') {
+        selectedNavChild.style.top =
+          animation.description[animationDirection].top;
+        selectedNavChild.style.opacity =
+          animation.description[animationDirection].opacity;
+        return;
+      }
+    }
+  });
+};
+
+// EVENT LISTENER
+
+navContainers.forEach((element) =>
   document
-    .querySelector(`[data-nav-item="${element.dataset.navItem}"]`)
-    .addEventListener('click', (event) => positionIndicator(event))
+    .querySelector(`[data-nav-container="${element.dataset.navContainer}"]`)
+    .addEventListener('click', (event) => getSelectedNavElement(event))
 );
+
+positionIndicator();
